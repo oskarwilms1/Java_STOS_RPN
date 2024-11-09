@@ -30,8 +30,9 @@ public class StackTest {
 		stack.push("B");
 		stack.push("C");
 		stack.pop();
+		stack.pop();
 		String result = stack.peek();
-		assertEquals("B",result);
+		assertEquals("A",result);
 	}
 
 }

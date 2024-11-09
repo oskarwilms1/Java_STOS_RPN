@@ -11,13 +11,19 @@ public class RPN {
     public void ConvertToArray(){
         StrArray = user_input.split(" ");
     }
-    public String Add(String var1,String var2){
+    public String Add(){
+        String var1 = stack.pop();
+        String var2 = stack.pop();
         return String.valueOf(Integer.parseInt(var1)+Integer.parseInt(var2));
     }
-    public String Substract(String var1, String var2){
-        return String.valueOf(Integer.parseInt(var1)-Integer.parseInt(var2));
+    public String Substract(){
+        String var1 = stack.pop();
+        String var2 = stack.pop();
+        return String.valueOf(Integer.parseInt(var2)-Integer.parseInt(var1));
     }
-    public String Multiply(String var1,String var2){
+    public String Multiply(){
+        String var1 = stack.pop();
+        String var2 = stack.pop();
         return String.valueOf(Integer.parseInt(var1)*Integer.parseInt(var2));
     }
     public int SetResultFromStack(){
@@ -29,19 +35,13 @@ public class RPN {
         String temp_var1,temp_var2;
         while (iteration < length){
             if (StrArray[iteration].charAt(0) == '+'){
-                temp_var2 = stack.pop();
-                temp_var1 = stack.pop();
-                stack.push(Add(temp_var1,temp_var2));
+                stack.push(Add());
             }
             else if(StrArray[iteration].charAt(0)  == '-'){
-                temp_var2 = stack.pop();
-                temp_var1 = stack.pop();
-                stack.push(Substract(temp_var1, temp_var2));
+                stack.push(Substract());
             }
             else if(StrArray[iteration].charAt(0)  == '*'){
-                temp_var2 = stack.pop();
-                temp_var1 = stack.pop();
-                stack.push(Multiply(temp_var1, temp_var2));
+                stack.push(Multiply());
             }
             else{
                 stack.push(""+StrArray[iteration] );
